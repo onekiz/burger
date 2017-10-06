@@ -1,0 +1,57 @@
+
+
+
+<div class = "container">
+
+  <div class = "row">
+    <div class = "col-sm-5">
+      <div class="card">
+
+      {{#each daburger}}
+      {{#if this.devour}}
+        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+            <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{this.id}}-  {{this.burger}}</li>
+                  <input type="hidden" name="devour" value="false">
+                  <button id = {{this.id}} class = "btn btn-secondary" type="submit">devour</button>
+            </ul>
+        </form>
+      {{/if}}
+      {{/each}}
+      </div>
+    </div>
+
+
+    <div class = "col-sm-2"></div>
+
+
+    <div class = "col-sm-5">
+      <div class="card">
+
+      {{#each daburger}}
+      {{#unless this.devour}}
+        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+            <ul>
+                <li class="list-group-item">{{this.id}}-  {{this.burger}}</li>
+            </ul>
+        </form>
+      {{/unless}}
+      {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+  <div class = "row">
+      <form class="create-update-form" action="/" method="POST">
+
+        <div class="form-group">
+          <label for="bur">What kind of burger you want</label>
+          <input type="text" id="burger" name="burgername">
+          <button class = "btn btn-success" type="submit">ADD DA BURGER</button>
+        </div>
+
+      </form>
+  </div>
+
+</div>
